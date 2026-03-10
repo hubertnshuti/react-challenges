@@ -3,6 +3,9 @@ import "./App.jsx";
 import "./App.css";
 
 export default function App() {
+  const handleclick = () => {
+    alert("You clicked!!");
+  };
   return (
     <div className="h-screen overflow-y-scroll snap-y snap-proximity">
       <div className="h-screen snap-start">
@@ -10,7 +13,7 @@ export default function App() {
       </div>
 
       <div className="h-screen snap-start">
-        <HandleUserClick />
+        <MyBotton onClick={handleclick}>Click Me</MyBotton>
       </div>
 
       <div className="h-screen snap-start flex justify-center items-center gap-20">
@@ -48,17 +51,14 @@ function HelloWorld() {
   );
 }
 
-function HandleUserClick() {
-  const handleclick = () => {
-    alert("You clicked!!");
-  };
+function MyBotton(props) {
   return (
     <div className="h-screen flex justify-center items-center">
       <button
-        onClick={handleclick}
-        className="text-2xl font-medium text-green-400 border px-6 py-2 rounded-2xl mt-52 mb-30 w-50 block mx-auto hover:text-white hover:bg-green-400 shadow-md hover:shadow-xl hover:scale-102 transition-all duration-300 ease-in-out cursor-pointer"
+        onClick={props.onClick}
+        className="text-2xl font-medium text-green-400 border px-6 py-2 rounded-2xl mt-52 mb-30 w-50 block mx-auto hover:text-white hover:bg-green-400 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer"
       >
-        Click Me
+        {props.children}
       </button>
     </div>
   );
@@ -69,8 +69,7 @@ function Button(props) {
     <>
       <button
         onClick={props.oneBtnClick}
-        className="text-2xl font-medium text-green-400 border px-6 py-2 rounded-2xl inline hover:text-white hover:bg-green-400 shadow-md hover:shadow-xl hover:scale-102 transition-all duration-300 ease-in-out cursor-pointer"
-      >
+        className="text-2xl font-medium text-green-400 border px-6 py-2 rounded-2xl inline hover:text-white hover:bg-green-400 shadow-md hover:shadow-xl hover:scale-102 transition-all duration-300 ease-in-out cursor-pointer">
         {props.children}
       </button>
     </>
