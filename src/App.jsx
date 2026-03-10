@@ -42,6 +42,9 @@ let [count, setCount] = useState(0);
         <p className="text-center">Button has been Clicked: {count} times.</p>
         <MyButton onClick={counter} >Click to Count... and I added text to test my Tailwind skills</MyButton>
       </div>
+      <div className="h-screen snap-start flex items-center justify-center">
+        <AnimalsList/>
+      </div>
     </div>
   );
 }
@@ -50,7 +53,7 @@ function HelloWorld() {
   return (
     <>
       <h3 className="text-4xl text-blue-500 font-bold text-center">
-        First component Hello World!
+        Welcome to my React Challenges!
       </h3>
       <div className="text-3xl flex justify-center items-center h-screen">
         <div className="text-blue-500 font-bold border rounded-2xl p-4 size-70 flex justify-center items-center cursor-pointer">
@@ -86,4 +89,22 @@ function MyButton(props) {
 //   );
 // }
 
-
+function AnimalsList(){
+  const animals = ['dog', 'cat', 'chicken', 'cow', 'sheep', 'horse'];
+  const getPostfix = (index) => {
+    if ([0, 4, 5].includes(index)) return 'th';
+    if (index === 1) return 'st';
+    if (index === 2) return 'nd';
+    if (index === 3) return 'rd';
+    return 'th'; 
+  }
+  
+  return (
+    <ul>
+      {animals.map((animal, index) => {
+        return <li>This is the {index}{getPostfix(index)} animal, <span className="text-blue-400 font-black font-[italic]">{animal}</span></li>
+      }
+      )}
+    </ul>
+  )
+}
