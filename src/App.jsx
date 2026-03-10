@@ -3,20 +3,26 @@ import "./App.jsx";
 import "./App.css";
 
 export default function App() {
+let [count, setCount] = useState(0);
+
   const handleclick = () => {
     alert("You clicked!!");
   };
+  const counter = () => {
+    ++count
+    setCount(count);    
+  }
   return (
     <div className="h-screen overflow-y-scroll snap-y snap-proximity">
       <div className="h-screen snap-start">
         <HelloWorld />
       </div>
 
-      <div className="h-screen snap-start">
-        <MyBotton onClick={handleclick}>Click Me</MyBotton>
+      <div className="h-screen snap-start flex justify-center items-center">
+        <MyButton onClick={handleclick}>Click Me</MyButton>
       </div>
 
-      <div className="h-screen snap-start flex justify-center items-center gap-20">
+      <div className="h-screen snap-start flex justify-center items-center gap-10">
         {/* <Button oneBtnClick={() => alert('User clicked Button 1')}>
           Button 1
         </Button>
@@ -27,10 +33,14 @@ export default function App() {
           Button 3
         </Button> */}
         {[1, 2, 3].map((n) => (
-          <Button key={n} oneBtnClick={() => alert(`User clicked Button ${n}`)}>
+          <MyButton key={n} onClick={() => alert(`User clicked Button ${n}`)}>
             Button {n}
-          </Button>
+          </MyButton>
         ))}
+      </div>
+      <div className="h-screen snap-start flex flex-col items-center justify-center gap-2">
+        <p className="text-center">Button has been Clicked: {count} times.</p>
+        <MyButton onClick={counter} >Click to Count... and I added text to test my Tailwind skills</MyButton>
       </div>
     </div>
   );
@@ -51,27 +61,29 @@ function HelloWorld() {
   );
 }
 
-function MyBotton(props) {
-  return (
-    <div className="h-screen flex justify-center items-center">
-      <button
-        onClick={props.onClick}
-        className="text-2xl font-medium text-green-400 border px-6 py-2 rounded-2xl mt-52 mb-30 w-50 block mx-auto hover:text-white hover:bg-green-400 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer"
-      >
-        {props.children}
-      </button>
-    </div>
-  );
-}
-
-function Button(props) {
+function MyButton(props) {
   return (
     <>
       <button
-        onClick={props.oneBtnClick}
-        className="text-2xl font-medium text-green-400 border px-6 py-2 rounded-2xl inline hover:text-white hover:bg-green-400 shadow-md hover:shadow-xl hover:scale-102 transition-all duration-300 ease-in-out cursor-pointer">
+        onClick={props.onClick}
+        className="text-2xl font-medium text-green-400 border px-6 py-2 rounded-2xl mt-52 mb-30 w-auto block mx-auto hover:text-white hover:bg-green-400 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer"
+      >
         {props.children}
       </button>
     </>
   );
 }
+
+// function Button(props) {
+//   return (
+//     <>
+//       <button
+//         onClick={props.oneBtnClick}
+//         className="text-2xl font-medium text-green-400 border px-6 py-2 rounded-2xl inline hover:text-white hover:bg-green-400 shadow-md hover:shadow-xl hover:scale-102 transition-all duration-300 ease-in-out cursor-pointer">
+//         {props.children}
+//       </button>
+//     </>
+//   );
+// }
+
+
