@@ -46,8 +46,11 @@ const animals = ['dog', 'cat', 'chicken', 'cow', 'sheep', 'horse'];
       <div className="h-screen snap-start flex items-center justify-center">
         <AnimalsList/>
       </div>
-      <div className="flex justify-center items-center h-screen">
+      <div className="h-screen snap-start flex justify-center items-center">
         <AnimalsList2 animals={animals} />
+      </div>
+      <div className="h-screen snap-start flex justify-center items-center bg-gray-200">
+        <Form/>
       </div>
     </div>
   );
@@ -140,3 +143,62 @@ function AnimalsList2(props) {
     </div>
   );
 }
+
+function Form(){
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [firstnameError, setFirstnameError] = useState("");
+  const [lastnameError, setLastnameError] = useState("");
+
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+
+    if(firstnameError && lastnameError){
+      alert("Both First Name and Last Name must be at least 6 characters.");
+      return;
+    }
+
+    if(!firstnameError && !lastnameError){
+      alert(`Welcome ${firstName} ${lastName}`);
+    }else{
+      alert(firstnameError || lastnameError)
+    }
+  }
+
+  const handleUsername = (e) => {
+    const value = e.target.value;
+    const fieldName = e.target.name; 
+
+    if (fieldName === "fname") {
+      setFirstName(value);
+
+      if (value.length < 6) {
+        setFirstnameError("First Name is less than required 6 characters");
+      } else {
+        setFirstnameError(null);
+      }
+    } else {
+      setLastName(value);
+
+      if (value.length < 6) {
+        setLastnameError("Last Name is less than required 6 characters");
+      } else {
+        setLastnameError(null);
+      }
+    }
+  };
+
+  return (
+    <>
+      <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center  w-1/3 h-5/6 p-10 shadow-2xl rounded-4xl">
+        <h2 className="text-3xl font-medium font-title mb-10 text-gray-600 tracking-tight">
+          Welcome <span className="text-red-400">Back</span>
+        </h2>
+        <input name="fname" placeholder="First Name" value={firstName} onChange={handleUsername} className="w-4/5 text-[18px] outline outline-slate-400 rounded-sm p-3 focus:outline-2"></input> <br />
+        <input name="lname" placeholder="Last Name" value={lastName} onChange={handleUsername} className="w-4/5 text-[18px] outline outline-slate-400 rounded-sm p-3 focus:outline-2 transition-all duration-100"></input><br />
+        <button className="text-[18px] text-white font-black px-8 py-3 bg-red-400 rounded-2xl shadow-md w-4/5 hover:text-red-500 hover:bg-white hover:border hover:border-red-400 transition-colors duration-300 cursor-pointer ">Submit</button>
+      </form>
+    </>
+  )
+}
+
