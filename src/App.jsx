@@ -4,6 +4,7 @@ import "./App.css";
 
 export default function App() {
 let [count, setCount] = useState(0);
+const animals = ['dog', 'cat', 'chicken', 'cow', 'sheep', 'horse'];
 
   const handleclick = () => {
     alert("You clicked!!");
@@ -44,6 +45,9 @@ let [count, setCount] = useState(0);
       </div>
       <div className="h-screen snap-start flex items-center justify-center">
         <AnimalsList/>
+      </div>
+      <div className="flex justify-center items-center h-screen">
+        <AnimalsList2 animals={animals} />
       </div>
     </div>
   );
@@ -100,11 +104,39 @@ function AnimalsList(){
   }
   
   return (
-    <ul>
-      {animals.map((animal, index) => {
-        return <li>This is the {index}{getPostfix(index)} animal, <span className="text-blue-400 font-black font-[italic]">{animal}</span></li>
-      }
-      )}
-    </ul>
+    <>
+      <h4>Animals List</h4>
+      <ul>
+        {animals.map((animal, index) => {
+          return <li>This is the {index}{getPostfix(index)} animal, <span className="text-blue-400 font-black font-[italic]">{animal}</span></li>
+        }
+        )}
+      </ul>
+    </>
   )
+}
+
+function AnimalsList2(props) {
+  const emojis = {
+    dog: "🐶",
+    cat: "🐱",
+    chicken: "🐔",
+    cow: "🐮",
+    sheep: "🐑",
+    horse: "🐴"
+  };
+
+  return (
+    <div className="border rounded-md w-60 overflow-hidden">
+      {props.animals.map((animal) => (
+        <div
+          key={animal}
+          className="flex items-center gap-3 p-3 border-b last:border-b-0"
+        >
+          <span className="text-xl">{emojis[animal]}</span>
+          <span>{animal}</span>
+        </div>
+      ))}
+    </div>
+  );
 }
