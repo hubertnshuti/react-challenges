@@ -1,16 +1,60 @@
-# React + Vite
+# React Challenges
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains a collection of React exercises I build to practice React in depth.  
+The focus is on writing components and logic **directly by hand without relying on helper tools or abstractions**, in order to deepen practical understanding of how React actually works.
 
-Currently, two official plugins are available:
+These challenges explore React concepts through small focused implementations rather than large applications.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Areas Practiced
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The exercises in this repository explore practical React patterns such as:
 
-## Expanding the ESLint configuration
+- Building reusable components
+- Passing data using props
+- Using `children` for flexible component composition
+- Handling events with `onClick`
+- Managing state with `useState`
+- Rendering dynamic lists using `.map()`
+- Structuring components for reusability
+- UI layout with Tailwind CSS
+- Full-screen section layouts with scroll snapping
+- Small interactive UI behaviors
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Example Exercises
+
+Some of the challenges implemented include:
+
+### Reusable Button Components
+Creating custom button components that can be reused in different parts of the UI while performing different tasks depending on the props passed to them.
+
+### Click Counter
+A button that updates a counter using React state and reflects the number of times the user interacts with the component.
+
+### Rendering Lists
+Rendering multiple components dynamically using arrays and `.map()` to generate elements based on data.
+
+### Component Composition
+Combining multiple small components together to build larger UI structures while keeping each component focused and reusable.
+
+### Full-Screen Section Layout
+Experimenting with vertically scrollable sections using Tailwind utilities like `h-screen` and scroll snapping to control page flow.
+
+---
+
+## Technologies Used
+
+- React
+- Vite
+- Tailwind CSS
+- Modern JavaScript (ES6+)
+
+---
+
+## Purpose
+
+This repository acts as a **continuous collection of focused React exercises** where I experiment with different component patterns and UI behaviors.  
+New challenges are added as I continue practicing and exploring React in more depth.
